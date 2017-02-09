@@ -108,6 +108,11 @@ if [[ ${IMPORT_USER}x = "true"x || ${IMPORT_USER}x = "TRUE"x ]]; then
         echo "ou: group" >> ${USER_LDIF}
         echo "description: Information for all groups" >> ${USER_LDIF}
         echo "" >> ${USER_LDIF}
+        echo "dn: cn=users,ou=group,${SLAPD_DN}" >> ${USER_LDIF}
+        echo "objectClass: posixGroup" >> ${USER_LDIF}
+        echo "gidNumber: 10000" >> ${USER_LDIF}
+        echo "cn: users" >> ${USER_LDIF}
+        echo "" >> ${USER_LDIF}
         echo "dn: uid=gerrit,ou=people,${SLAPD_DN}" >> ${USER_LDIF}
         echo "objectClass: posixAccount" >> ${USER_LDIF}
         echo "objectClass: inetOrgPerson" >> ${USER_LDIF}
